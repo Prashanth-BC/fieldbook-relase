@@ -1,0 +1,10 @@
+{
+  "id": "fieldbook",
+  "name": "Fieldbook",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "Collaborative note-taking for Obsidian with real-time editing and offline sync to Google Drive.",
+  "author": "Bhagyalakshmi Chamegowda",
+  "authorUrl": "mailto:will.be.provided@gmail.com",
+  "isDesktopOnly": false
+}
