@@ -6,10 +6,9 @@ if [ $# -lt 1 ]; then
 fi
 VAULT="$1"
 PLUGIN_DIR="$VAULT/.obsidian/plugins/fieldbook"
-TMP_DIR="$(mktemp -d)"
-URL="https://github.com/Prashanth-BC/fieldbook-relase/releases/latest/download/fieldbook-latest.zip"
+BASE="https://raw.githubusercontent.com/Prashanth-BC/fieldbook-relase/main"
 mkdir -p "$PLUGIN_DIR"
-curl -L "$URL" -o "$TMP_DIR/fieldbook.zip"
-unzip -o "$TMP_DIR/fieldbook.zip" -d "$PLUGIN_DIR" >/dev/null
-rm -rf "$TMP_DIR"
+curl -fsSL "$BASE/main.js" -o "$PLUGIN_DIR/main.js"
+curl -fsSL "$BASE/manifest.json" -o "$PLUGIN_DIR/manifest.json"
+curl -fsSL "$BASE/styles.css" -o "$PLUGIN_DIR/styles.css"
 echo "Installed Fieldbook to $PLUGIN_DIR"
