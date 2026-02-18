@@ -1,22 +1,21 @@
 #!/bin/bash
 # install-client.sh - Installs the Vault Sync plugin to an Obsidian vault
 
-# Get the directory where the script is located
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BASE_URL="https://raw.githubusercontent.com/Prashanth-BC/fieldbook-relase/main/fieldbook-y/client"
+VAULT_PATH="$1"
 
-if [ -z "$1" ]; then
-  echo "Usage: ./install-client.sh <path_to_obsidian_vault>"
+if [ -z "$VAULT_PATH" ]; then
+  echo "Usage: curl -sSL https://raw.githubusercontent.com/Prashanth-BC/fieldbook-relase/main/fieldbook-y/install-client.sh | bash -s -- <path_to_obsidian_vault>"
   exit 1
 fi
 
-VAULT_PATH="$1"
 PLUGIN_DIR="$VAULT_PATH/.obsidian/plugins/obsidian-vault-sync"
 
 echo "Installing to $PLUGIN_DIR..."
 mkdir -p "$PLUGIN_DIR"
 
-cp "$SCRIPT_DIR/client/main.js" "$PLUGIN_DIR/"
-cp "$SCRIPT_DIR/client/manifest.json" "$PLUGIN_DIR/"
-cp "$SCRIPT_DIR/client/styles.css" "$PLUGIN_DIR/"
+curl -sSL "$BASE_URL/main.js" -o "$PLUGIN_DIR/main.js"
+curl -sSL "$BASE_URL/manifest.json" -o "$PLUGIN_DIR/manifest.json"
+curl -sSL "$BASE_URL/styles.css" -o "$PLUGIN_DIR/styles.css"
 
 echo "Plugin installed! Please enable 'Vault Sync' in Obsidian Community Plugins."

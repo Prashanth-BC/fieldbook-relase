@@ -1,16 +1,18 @@
 #!/bin/bash
 # install-server.sh - Sets up the Sync Hub server
 
-# Get the directory where the script is located
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
+BASE_URL="https://raw.githubusercontent.com/Prashanth-BC/fieldbook-relase/main/fieldbook-y/server"
+SERVER_NAME="fieldbook-sync-hub"
 INSTALL_DIR=${1:-"./vaultsync-server"}
+
+echo "Stopping any running instances of $SERVER_NAME..."
+pkill -f "$SERVER_NAME" || true
 
 echo "Installing server to $INSTALL_DIR..."
 mkdir -p "$INSTALL_DIR"
 
-cp "$SCRIPT_DIR/server/server.kexe" "$INSTALL_DIR/"
-chmod +x "$INSTALL_DIR/server.kexe"
+curl -sSL "$BASE_URL/$SERVER_NAME" -o "$INSTALL_DIR/$SERVER_NAME"
+chmod +x "$INSTALL_DIR/$SERVER_NAME"
 
-echo "Server installed to $INSTALL_DIR/server.kexe"
-echo "Run with: cd $INSTALL_DIR && ./server.kexe"
+echo "Server installed to $INSTALL_DIR/$SERVER_NAME"
+echo "Run with: cd $INSTALL_DIR && ./$SERVER_NAME"
