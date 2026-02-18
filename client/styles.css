@@ -1,0 +1,35 @@
+/* Vault Sync plugin styles */
+
+.vault-sync-status {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.vault-sync-status .status-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.vault-sync-status.is-synced .status-icon {
+    color: var(--text-success);
+}
+
+.vault-sync-status.is-syncing .status-icon {
+    color: var(--text-accent);
+    animation: vault-sync-spin 1s linear infinite;
+}
+
+.vault-sync-status.is-offline .status-icon {
+    color: var(--text-muted);
+}
+
+.vault-sync-status.is-error .status-icon {
+    color: var(--text-error);
+    cursor: pointer;
+}
+
+@keyframes vault-sync-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

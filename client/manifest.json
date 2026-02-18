@@ -1,0 +1,9 @@
+{
+    "id": "obsidian-vault-sync",
+    "name": "Vault Sync",
+    "version": "0.1.0",
+    "minAppVersion": "1.4.0",
+    "description": "CRDT-based vault sync across devices using Git for persistence",
+    "author": "Prashanth Bhagyalakshmi Chamegowda",
+    "isDesktopOnly": false
+}
